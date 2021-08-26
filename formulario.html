@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type = "text/css" href= "formulario.css" media="screen">
+    <title>Cadastro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div>
+   <h1 id = "titulo" >Preenchimento de Candidatura</h1>
+   <p id ="subtitulo">Complete suas informações</p>
+   <br>
+</div>
+
+    <form>
+        <fieldset class="grupo">
+            <div class="campo">
+                <label for= "Nome Completo*"><strong>Nome Completo*</strong></label>
+                <input type = "text" name= "Nome Completo*" id="Nome Completo*" >
+            </div>
+            
+            <div class ="campo">
+               <label for ="Profissão"><strong>Profissão</strong></label> 
+               <input type = "text" name = "Profissão" id="Profissão">
+            </div>
+
+            <div class="campo">
+                <label for ="email"><strong>Email</strong></label>
+                <input type ="email" name = "email" id ="email" >
+            </div>
+        </fieldset>
+
+        <fieldset class="grupo">
+        <div class ="campo"> 
+            <label for = "Estado Civil"><strong>Estado Civil</strong></label>
+            <select id="Estado Civil">
+                <option selected disabled value="">Selecione</option>
+                <option>Solteiro(a)</option>
+                <option>Casado(a)</option>
+                <option>Divorciado(a)</option>
+            </select>
+        </div>
+        
+        <div class ="campo"> 
+            <label for = "Sexo"><strong>Sexo</strong></label>
+            <select id="Sexo">
+                <option selected disabled value="">Selecione</option>
+                <option>mulher cisgênero</option>
+                <option>homem cisgênero</option>
+                <option>mulher transgênero</option>
+                <option>homem transgênero</option>
+                <option>não binário</option>
+             </select>
+        </div>
+
+        <div class ="campo">
+            <label for ="Data de Nascimento*"><strong>Data de Nascimento*</strong></label> 
+            <input type = "date" name = "Data de Nascimento*" id="Data de Nascimento*" >
+        </div>
+        </fieldset>
+
+        <fieldset class="grupo">
+        <div class ="campo">
+            <label for ="Telefone Fixo"><strong>Telefone Fixo</strong></label> 
+            <input type = "text" name = "Telefone Fixo" id="Telefone Fixo">
+         </div>
+
+         <div class ="campo">
+            <label for ="Celular"><strong>Celular</strong></label> 
+            <input type = "text" name = "Celular" id="Celular">
+         </div>
+         <div class ="campo">
+            <label for ="Contato"><strong>Contato</strong></label> 
+            <input type = "text" name = "Contato" id="Contato">
+         </div>
+        </fieldset>
+
+        <div class ="campo">
+
+            <body>
+                <!-- Inicio do formulario -->
+                  <form method="get" action=".">
+                    <label>Cep:
+                        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                               onblur="pesquisacep(this.value);" /></label><br />
+                    <label>Rua:
+                    <input name="rua" type="text" id="rua" size="60" /></label><br />
+                    <label>Número:
+                    <input name="número" type="text" id="número" size="2"   /></label><br />
+                    <label>Complemento:
+                    <input name="complemento" type="text" id="complemento" size="60"   /></label><br />
+                    <label>Bairro:
+                    <input name="bairro" type="text" id="bairro" size="40"  /></label><br />
+                    <label>Cidade:
+                    <input name="cidade" type="text" id="cidade" size="40"   /></label><br />
+                    <label>Estado:
+                    <input name="uf" type="text" id="uf" size="2"   /></label><br />
+                    
+                  </form>
+                </body>
+
+            <script>
+
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('uf').value=("");
+            
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('uf').value=(conteudo.uf);
+            
+            
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+                document.getElementById('uf').value="...";
+                
+              
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>
+
+</div>
+
+<div>
+    <h2 id = "titulo" >Documentos</h2>
+    <br>
+ </div>
+ <fieldset class="grupo">
+ <div class ="campo">
+    <label for ="Identidade*"><strong>Identidade*</strong></label> 
+    <input type = "text" name = "Identidade*" id="Identidade*" required>
+</div>
+
+<div class ="campo">
+    <label for ="CPF*"><strong>CPF*</strong></label> 
+    <input type = "text" name = "CPF*" id="CPF" autocomplete="off"  maxlength="11"  required>
+</div>
+<div class ="campo"> 
+    <label for = "Possui veículo"><strong>Possui Veículo</strong></label>
+    <select id="Possui Veículo">
+        <option selected disabled value="">Selecione</option>
+        <option>Sim</option>
+        <option>Não</option>
+     </select>
+</div>
+<div class ="campo"> 
+    <label for = "Habilitação"><strong>Habilitação</strong></label>
+    <select id="Habilitação">
+        <option selected disabled value="">Selecione</option>
+        <option>A</option>
+        <option>B</option>
+        <option>AB</option>
+     </select>
+</div>
+</fieldset>
+</html>
