@@ -46,9 +46,7 @@ fieldset.grupo .campo{
     box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
     display: block;
 }
-.campo select option{
-    padding-right: 1em;
-}
+
 .campo input:focus, .campo select:focus, .campo textarea:focus{
     background: #e2cbec;
 }
@@ -62,8 +60,8 @@ padding: 0.2em 0.6em;
 box-shadow: 2px 2px 2px rgba(0,0,0, 0.2);
 text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 position: absolute;
-top:100%;
-left: 50%;
+top:130%;
+left: 55%;
 margin-right: -50%;
 transform: translate(-50%,-50%);
 }

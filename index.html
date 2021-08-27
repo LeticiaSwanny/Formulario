@@ -15,16 +15,17 @@
    <br>
 </div>
 
-    <form>
+
+        <form>
         <fieldset class="grupo">
             <div class="campo">
-                <label for= "Nome Completo*"><strong>Nome Completo*</strong></label>
-                <input type = "text" name= "Nome Completo*" id="Nome Completo*" >
+                <label for= "nome"><strong>Nome Completo*</strong></label>
+                <input type = "text" name= "nome" id="nome"  requerid >
             </div>
             
             <div class ="campo">
-               <label for ="Profissão"><strong>Profissão</strong></label> 
-               <input type = "text" name = "Profissão" id="Profissão">
+               <label for ="profissao"><strong>Profissão</strong></label> 
+               <input type = "text" name = "profissao" id="profissao">
             </div>
 
             <div class="campo">
@@ -35,8 +36,8 @@
 
         <fieldset class="grupo">
         <div class ="campo"> 
-            <label for = "Estado Civil"><strong>Estado Civil</strong></label>
-            <select id="Estado Civil">
+            <label for = "estado"><strong>Estado Civil</strong></label>
+            <select id="estado">
                 <option selected disabled value="">Selecione</option>
                 <option>Solteiro(a)</option>
                 <option>Casado(a)</option>
@@ -45,8 +46,8 @@
         </div>
         
         <div class ="campo"> 
-            <label for = "Sexo"><strong>Sexo</strong></label>
-            <select id="Sexo">
+            <label for = "sexo"><strong>Sexo</strong></label>
+            <select id="sexo">
                 <option selected disabled value="">Selecione</option>
                 <option>mulher cisgênero</option>
                 <option>homem cisgênero</option>
@@ -57,24 +58,24 @@
         </div>
 
         <div class ="campo">
-            <label for ="Data de Nascimento*"><strong>Data de Nascimento*</strong></label> 
-            <input type = "date" name = "Data de Nascimento*" id="Data de Nascimento*" >
+            <label for ="data"><strong>Data de Nascimento*</strong></label> 
+            <input type = "date" name = "data" id="data" requerid>
         </div>
         </fieldset>
 
         <fieldset class="grupo">
         <div class ="campo">
-            <label for ="Telefone Fixo"><strong>Telefone Fixo</strong></label> 
-            <input type = "text" name = "Telefone Fixo" id="Telefone Fixo">
+            <label for ="telefone"><strong>Telefone Fixo</strong></label> 
+            <input type = "text" name = "telefone" id="telefone">
          </div>
 
          <div class ="campo">
-            <label for ="Celular"><strong>Celular</strong></label> 
-            <input type = "text" name = "Celular" id="Celular">
+            <label for ="celular"><strong>Celular</strong></label> 
+            <input type = "text" name = "celular" id="celular">
          </div>
          <div class ="campo">
-            <label for ="Contato"><strong>Contato</strong></label> 
-            <input type = "text" name = "Contato" id="Contato">
+            <label for ="contato"><strong>Contato</strong></label> 
+            <input type = "text" name = "contato" id="contato">
          </div>
         </fieldset>
 
@@ -181,7 +182,7 @@
     <h2 id = "titulo" >Documentos</h2>
     <br>
  </div>
- <fieldset class="grupo">
+      <fieldset class="grupo">
  <div class ="campo">
     <label for ="Identidade*"><strong>Identidade*</strong></label> 
     <input type = "text" name = "Identidade*" id="Identidade*" required>
@@ -207,6 +208,13 @@
         <option>B</option>
         <option>AB</option>
      </select>
+
+    
+    </div> 
+    <button class ="botao" type = "submit">Concluído</button>
+
+
 </div>
-</fieldset>
+       </fieldset>
+    </form>
 </html>
